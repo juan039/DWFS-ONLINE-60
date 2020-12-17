@@ -6,13 +6,13 @@ class Producto {
 }
 
 let productos = [];
+let carrito_de_compras = [];
 
 function crearProducto(nombre, precio) {
     let nuevoProducto = new Producto(nombre, precio);
     productos.push(nuevoProducto);
 }
 
-let carrito_de_compras = [];
 crearProducto('Manzana', 50);
 crearProducto('Pera', 80);
 crearProducto('Naranja', 100);
@@ -31,22 +31,31 @@ function mostrarProductos() {
 }
 mostrarProductos();
 
-function agregarProductoACarrito(event) {
+function agregarProductoACarritoEvento(event) {
+    console.log(event.target)
     let clicked_button = event.target;
     let index = clicked_button.dataset.index;
     console.log(index)
     let producto = productos[index];
-    carrito_de_compras.push(producto);
-    let carrito = document.querySelector('.carrito');
-    let productoElement = document.createElement('li');
-    productoElement.innerHTML = producto.nombre;
-    carrito.appendChild(productoElement);
-    localStorage.setItem('carrito', JSON.stringify(carrito_de_compras));
+    agregarProductoACarrito(producto, sayHi)
 }
 
+function agregarProductoACarrito(product, cb) {
+    carrito_de_compras.push(product);
+    let carrito = document.querySelector('.carrito');
+    let productoElement = document.createElement('li');
+    productoElement.innerHTML = product.nombre;
+    carrito.appendChild(productoElement);
+    localStorage.setItem('carrito', JSON.stringify(carrito_de_compras));
+    cb();
+}
+
+function sayHi() {
+    console.log('hola')
+}
 let botones_productos = document.querySelectorAll('.agregar');
 
 for (let i = 0; i < botones_productos.length; i++) {
     const element = botones_productos[i];
-    element.addEventListener('click', agregarProductoACarrito)
+    element.addEventListener('click', agregarProductoACarritoEvento)
 }

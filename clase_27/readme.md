@@ -45,7 +45,7 @@ La manera en que se hace es por medio del LocaslStorage, ya que el LocalStorage 
     - De acuerdo a lo anterior vamos a necesitar ciertas funciones:
         _ Crear Productos: Se crea un objeto producto y se agrega al array de productos.
         _ Mostrar Productos, este metodo nos va a ayudar a mostrar en HTML los productos de nuestro Array. Por medio de un bucle se va a recorrer todo el array de productos, creando los elementos de acuerdo a la estructura de HTML creada, etiquetas, clases, etc.
-        _ Agregar Porductos al Carrito, Agregar un producto al array de carrrito y agregar el array de carrito al LocalStorage.
+        _ Agregar Productos al Carrito, Agregar un producto al array de carrrito y agregar el array de carrito al LocalStorage.
         _ Agregar el Evento click a todos los botones de los productos 
         _ Limpiar Carrito: Elimina la variable en localStorage o solo su contenido.
 5.2
